@@ -1,0 +1,1 @@
+Tiedostossa RPA-harjoitustyö.md on Seinäjoen Ammattikorkeakoulun (SeAMK) Generatiivisen tekoälyn hyödyntäminen -kurssin harjoitustyö.
