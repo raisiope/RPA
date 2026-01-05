@@ -212,6 +212,7 @@ Koska Raspberry Pi toimii automaation keskuslaitteena, sen turvallisuus on keske
 * MQTT-välityspalvelimen ACL (Access Control Lists)
 
 ---
+---
 
 ## 4. IoT‑sensorien ja laitteiden simulointi
 
@@ -909,7 +910,7 @@ Käyttäjä haluaa raportin hälytyksistä.
 ### 8.3 “Avaa luukku, jos kuivavara alittaa 20 cm”  
 
 ### Käyttäjän komento
-> “Avaa kaivon A1 patoluukku, jos kuivavvara alittaa 20 cm.”
+> “Avaa kaivon A1 patoluukku, jos kuivavara alittaa 20 cm.”
 
 ### LLM:n tulkinta
 Kyseessä on ehtopohjainen automaatio.
