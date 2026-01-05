@@ -355,8 +355,10 @@ Sensorit lähettävät dataa MQTT‑brokerille, josta Node‑RED vastaanottaa se
 
 ```inject```‑solmu voi toimia cron‑ajastimena esimerkiksi:
 * tunnin välein tehtäville raporteille
-* päivittäisille tarkistuksille
+* päivittäisille tarkistuksille (aamuraportti)
 * automaattisille huoltotoimille
+
+Esimerkiksi päivittäinen aamuraportti SSOT-automaation tilasta ja asioista, joista olisi hyvä olla tietoinen. Esimerkiksi kaivojen vesipintojen tai pohjaveden muutokset, joissa on tapahtunut merkittäviä muutoksia tai saattavat vaativat toimenpiteitä. Myös raportti "Kaikki näyttää olevan kunnossa." on erittäin hyödyllinen.
 
 **HTTP‑pyynnöt**
 
