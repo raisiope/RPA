@@ -2,7 +2,7 @@
 
 ## 1. Johdanto
 
-Robotic Process Automation (RPA) on perinteisesti yhdistetty toimistoympäristöihin, joissa ohjelmistorobotit suorittavat toistuvia ja sääntöpohjaisia tehtäviä ihmisen puolesta. Tyypillisiä esimerkkejä ovat hyväksyntä- ja tarkastusporsessit (esim. matkalaskut), tiedostojen käsittely, lomakkeiden täyttö ja tietojen siirtäminen järjestelmästä toiseen. Viime vuosina automaation kenttä on kuitenkin laajentunut merkittävästi: RPA ei ole enää vain “hiiren klikkailua”, vaan yhä useammin fyysisen ja digitaalisen maailman yhdistämistä.
+Robotic Process Automation (RPA) on perinteisesti yhdistetty toimistoympäristöihin, joissa ohjelmistorobotit suorittavat toistuvia ja sääntöpohjaisia tehtäviä ihmisen puolesta. Tyypillisiä esimerkkejä ovat ohjelmistojen testaukset, hyväksyntä- ja tarkastusporsessit (esim. matkalaskut), tiedostojen käsittely, lomakkeiden täyttö ja tietojen siirtäminen järjestelmästä toiseen. Viime vuosina automaation kenttä on kuitenkin laajentunut merkittävästi: RPA ei ole enää vain “hiiren klikkailua”, vaan yhä useammin fyysisen ja digitaalisen maailman yhdistämistä.
 
 Tämä kehitys on seurausta kahdesta suuresta muutoksesta. Ensimmäinen on IoT‑laitteiden ja edullisten sulautettujen alustojen, kuten Raspberry Pi:n, yleistyminen. Ne mahdollistavat fyysisen ympäristön tilan mittaamisen, ohjaamisen ja valvonnan tavalla, joka aiemmin vaati raskaita teollisuusjärjestelmiä. Toinen muutos on suurten kielimallien (LLM) ja Model Context Protocol (MCP) ‑rajapinnan kehittyminen. MCP tarjoaa tavan, jolla LLM voi ymmärtää käyttäjän luonnollisella kielellä antamia komentoja ja muuntaa ne rakenteisiksi, täsmällisiksi ohjeiksi automaatiojärjestelmille.
 
@@ -1209,3 +1209,4 @@ Tulevaisuuden automaatiojärjestelmät voivat olla:
 * fyysisen ja digitaalisen maailman yhdistäviä
 
 Tämä harjoitustyö toimii konkreettisena esimerkkinä siitä, miten tällainen järjestelmä voidaan rakentaa avoimen lähdekoodin työkaluilla ja modulaarisella arkkitehtuurilla.
+
