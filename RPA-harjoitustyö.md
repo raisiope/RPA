@@ -853,7 +853,7 @@ Tässä luvussa esitellään kokonaisia automaatioskenaarioita, jotka demonstroi
 > “Nosta Kaivon A1 patokorkeutta 20 cm.”
 
 ### LLM:n tulkinta
-LLM tunnistaa käyttäjän tarkoituksen: laitteen nopeuden säätäminen.
+LLM tunnistaa käyttäjän tarkoituksen: kaivon patokorkeuden säätäminen.
 
 ### MCP‑komento
 
@@ -868,9 +868,9 @@ LLM tunnistaa käyttäjän tarkoituksen: laitteen nopeuden säätäminen.
 ```
 
 ### Node‑REDin toiminta
-1. Vastaanottaa MCP‑komennon HTTP‑ tai MQTT‑endpointista.
-2. Tarkistaa, että machine1 on olemassa ja toiminnassa.
-3. Laskee uuden nopeuden.
+1. Vastaanottaa MCP‑komennon MQTT‑endpointista.
+2. Tarkistaa, että kaivo A1 on olemassa ja toiminnassa.
+3. Laskee uuden patokorkeuden.
 4. Ohjaa toimilaitetta (esim. releellä).
 5. Kirjaa tapahtuman tietokantaan.
 6. Palauttaa tuloksen MCP:lle.
