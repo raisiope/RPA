@@ -1,5 +1,7 @@
 # IoT‑pohjainen RPA‑järjestelmä Node‑REDillä ja MCP‑ohjauksella
 
+---
+
 ## 1. Johdanto
 
 Robotic Process Automation (RPA) on perinteisesti yhdistetty toimistoympäristöihin, joissa ohjelmistorobotit suorittavat toistuvia ja sääntöpohjaisia tehtäviä ihmisen puolesta. Tyypillisiä esimerkkejä ovat ohjelmistojen testaukset, hyväksyntä- ja tarkastusporsessit (esim. matkalaskut), tiedostojen käsittely, lomakkeiden täyttö ja tietojen siirtäminen järjestelmästä toiseen. Viime vuosina automaation kenttä on kuitenkin laajentunut merkittävästi: RPA ei ole enää vain “hiiren klikkailua”, vaan yhä useammin fyysisen ja digitaalisen maailman yhdistämistä.
@@ -18,6 +20,7 @@ SSOT-automaation käytön merkittävin este on pelko käytön monimutkaisuudesta
 
 RPA (Robotic Process Automation) mahdollistaa SSOT-automaation prosessien automatisoinnin MCP-palvelujen avulla. Käytännössä tavoitteena on ohjata SSOT-automaatiota keskustelemalla automaatiojärjestelmän kanssa yhä luontevasti kuin ystävällisen ja avuliaan työntekijän kanssa.
 
+---
 ---
 
 ## 2. Arkkitehtuurin yleiskuva
@@ -40,7 +43,7 @@ Node‑RED toimii järjestelmän “aivoina”. Se vastaanottaa sensoridataa, su
 Model Context Protocol toimii rajapintana, jonka kautta LLM voi lähettää rakenteisia komentoja Node‑REDille. MCP määrittelee komentojen muodot, parametrit ja sallitut toiminnot.
 
 4. Luonnollisen kielen kerros (LLM‑ohjaus)  
-Käyttäjä antaa komennot suomen kielellä. LLM tulkitsee ne, muuntaa MCP‑komennoksi ja välittää Node‑REDille. LLM myös muotoilee vastaukset käyttäjälle.
+Käyttäjä antaa komennot suomenkielellä. LLM tulkitsee ne, muuntaa MCP‑komennoksi ja välittää Node‑REDille. LLM myös muotoilee vastaukset käyttäjälle.
 
 Näiden kerrosten välinen vuorovaikutus muodostaa kokonaisuuden, jossa fyysiset tapahtumat ja luonnollisen kielen ohjaus toimivat saumattomasti yhdessä. LLM-ohjausta käytetään käyttöliittymänä, joka ei tarkoita tekoälyn (LLM) tekemiä ohjauspäätöksiä. Kaikki komennot ja komentoihin liittyvät vahvistukset esim. kysymykseen "Oletko varma?" ovat aina käyttäjän vastuulla.
 
@@ -53,7 +56,7 @@ Perinteinen RPA keskittyy ohjelmistojen sisäisiin prosesseihin. Tässä järjes
 * Sensorit tuottavat dataa, joka toimii automaation syötteenä
 * Node‑RED tekee päätöksiä sääntöjen ja logiikan perusteella
 * Toimilaitteet reagoivat automaation tuloksiin
-* LLM voi ohjata prosesseja luonnollisella kielellä
+* LLM:n avulla voidaan hallita prosesseja luonnollisella kielellä
 
 Tämä yhdistelmä mahdollistaa uudenlaisen automaation, jossa fyysiset tapahtumat ja digitaalinen logiikka muodostavat yhtenäisen prosessin.
 
@@ -62,12 +65,12 @@ Tämä yhdistelmä mahdollistaa uudenlaisen automaation, jossa fyysiset tapahtum
 ### 2.3 Node‑RED automaatiokerroksena (SSOT-EDGE ja SSOT-SCADA)
 
 Node‑RED toimii järjestelmän keskeisenä orkestrointialustana. Sen rooli sisältää:
-* Sparkplug- ja MQTT‑viestien vastaanotto ja lähetys
-* sensoridatan käsittely ja normalisointi
-* RPA‑logiikan toteutus (switch‑ehdot, funktiot, tilakoneet)
+* Sparkplug- ja MQTT‑viestien vastaanoton ja lähetyksen
+* sensoridatan käsittelyn ja normalisoinnin
+* RPA‑logiikan toteutuksen (switch‑ehdot, funktiot, tilakoneet)
 * aikasarjatietokantakirjaukset
-* MCP‑komentojen vastaanotto ja suoritus
-* dashboardi reaaliaikaiseen seurantaan
+* MCP‑komentojen vastaanoton ja suorituksen
+* dashboardin reaaliaikaiseen seurantaan
 
 Node‑RED sopii automaatiokerrokseksi sen visuaalisen käyttöliittymän, laajennettavuuden ja IoT‑yhteensopivuuden vuoksi. Se soveltuu erinomaisesti tavoitteisiin, joissa yhdistyvät sensoridata, automaatio ja ulkoiset rajapinnat.
 
@@ -75,10 +78,11 @@ Node‑RED sopii automaatiokerrokseksi sen visuaalisen käyttöliittymän, laaje
 
 ### 2.4 MCP rajapintana luonnollisen kielen ohjaukselle  
 Model Context Protocol toimii sillanrakentajana LLM:n ja Node‑REDin välillä. MCP:n avulla:
-* LLM voi ymmärtää käyttäjän suomenkieliset komennot
+* LLM ymmärtää käyttäjän suomenkieliset komennot
 * komennot muunnetaan rakenteisiksi JSON‑muotoisiksi ohjeiksi
-* Node‑RED voi suorittaa komennot täsmällisesti ja turvallisesti
-* järjestelmä voi palauttaa tulokset LLM:lle
+* Node‑RED suorittaa komennot täsmällisesti ja turvallisesti
+* järjestelmä palauttaa tulokset LLM:lle
+* LLM tuottaa käyttäjälle suomenkielisen vastauksen
 
 MCP:n etuna on sen selkeä ja laajennettava rakenne: uusia komentoja voidaan lisätä ilman, että toimintaa tarvitsee muuttaa. Tämä tekee järjestelmästä joustavan ja helposti ylläpidettävän.
 
@@ -106,6 +110,9 @@ Järjestelmän tietovirrat voidaan jakaa kolmeen päätyyppiin:
 * vahvistukset suoritetuista komennoista
 
 Näiden tietovirtojen avulla järjestelmä toimii automaattisesti käyttäjän ohjaamana. Automaattinen toiminta tarkoittaa käyttäjän antamien ehtojen ja rajaarvojen mukaista toimintaa.
+
+---
+---
 
 ## 3. Raspberry Pi alustana
 
@@ -152,13 +159,13 @@ Node‑RED tarjoaa valmiin asennusskriptin, joka:
 * asentaa Node‑REDin
 * konfiguroi palvelun systemd‑palveluksi
 
-Tämä on suositeltu tapa, jos halutaan kevyt ja suorituskykyinen ympäristö.
+Tämä on suositeltu tapa, jos halutaan kevyt ja suorituskykyinen ympäristö pienillä resursseilla
 
-2. Docker‑konttina Raspberry Pi 5 OS:ään
-Docker‑asennus tarjoaa:
+2. Docker‑konttina Raspberry Pi 5 OS:ään Docker‑asennus tarjoaa lisäksi:
 * eristetyn ympäristön
 * helpon päivitettävyyden
-* mahdollisuuden ajaa useita palveluita rinnakkain
+
+Mutta vaatii ememmän muistia ja tehoa mitä Raspberry Pi 5:lla on riittävästi
 
 Node‑RED käynnistyy oletuksena portissa 1880 ja tarjoaa selainpohjaisen editorin, jossa automaatiovirrat rakennetaan visuaalisesti.  
 
@@ -184,7 +191,7 @@ MQTT on kevyt viestinvälitysprotokolla, joka soveltuu erinomaisesti IoT‑ympä
 
 SSOT-automaatiossa Mosquitto‑broker toimii:
 * Node‑REDin sisääntulokanavana nettiin
-* MCP‑komentojen siirtotienä
+* MCP‑komentojen siirtotienä 
 * tilapäivitysten ja hälytysten jakelijana
 
 MQTT:n etuja ovat:
@@ -203,6 +210,8 @@ Koska Raspberry Pi toimii automaation keskuslaitteena, sen turvallisuus on keske
 * Node‑RED‑editorin suojaaminen salasanalla
 * MQTT‑brokerin sertifikaatit
 * MQTT-välityspalvelimen ACL (Access Control Lists)
+
+---
 
 ## 4. IoT‑sensorien ja laitteiden simulointi
 
@@ -223,7 +232,7 @@ Nämä anturit soveltuvat hyvin RPA‑logiikan syötteiksi, kuten:
 
 * hälytykset liian korkeasta pohjavedestä
 * automaattiset raportit ympäristöolosuhteista
-* MCP‑komennot esim. “Pohjaveden korkeus”
+* MCP‑komennot esim. “Anna säätökaivon A1 vedenkorkeuden raportti viimeisen viikon ajalta”
 
 **Painikkeet ja kytkimet**
 
@@ -254,16 +263,6 @@ Kaikkia fyysisiä sensoreita ei tarvitse asentaa heti. Node‑RED mahdollistaa s
 * voi generoida satunnaista tai mallinnettua dataa
 * mahdollistaa realistisen sensorikäyttäytymisen simulaation
 
-*Esimerkki simuloidusta lämpötilasta ja kosteudesta:*
-
-```javascript
-msg.payload = { 
-    temperature: 20 + Math.random() * 5, 
-    humidity: 40 + Math.random() * 10 
-}; 
-return msg;
-```
-
 **Dashboard‑sliderit ja syöttökentät**
 * käyttäjä voi itse muuttaa sensorin arvoa
 * sopii MCP‑komentojen testaukseen
@@ -283,7 +282,7 @@ Jotta Node‑RED voi käsitellä sensoridataa luotettavasti, data kannattaa stan
 
 ```json
 { 
-    "deviceId": "kaivo1", 
+    "deviceId": "A1", 
     "type": "patoKorkeus", 
     "value": 60, 
     "unit": "cm", 
@@ -316,6 +315,9 @@ Esimerkiksi:
 * “LLM antaa komennon ‘Käynnistä laite uudelleen’ → Node‑RED ohjaa relettä”
 
 Testaus varmistaa, että järjestelmä toimii luotettavasti sekä fyysisillä että virtuaalisilla sensoreilla.
+
+---
+---
 
 ## 5. Node‑RED automaatiokerros
 
@@ -447,6 +449,7 @@ Dashboard‑komponentteja ovat:
 
 Dashboard toimii sekä kehitystyökaluna että käyttöliittymänä valmiille järjestelmälle.
 
+---
 ---
 
 ## 6. MCP‑palveluiden integrointi
@@ -637,15 +640,17 @@ Node‑RED → MCP:
 ```json
 {
   "status": "ok",
-  "temperature": 23.4
+  "deviceId": "A1"
+  "value": 60
 }
 ```
 
 LLM → käyttäjä:
-> “Nykyinen lämpötila on 23,4 °C.”
+> “Raportoitu kaivon A1 patokorkeus on 60 cm.”
 
 Tämä kerros tekee järjestelmästä käyttäjäystävällisen ja intuitiivisen.
 
+---
 ---
 
 ## 7. Luonnollisen kielen ohjaus
@@ -690,7 +695,7 @@ LLM → MCP:
 
 ```json
 {
-  "command": "nostaParokorkeutta",
+  "command": "nostaPatokorkeutta",
   "parameters": {
     "deviceId": "A1",
     "value": 10
@@ -708,7 +713,7 @@ LLM → MCP:
 {
   "command": "haeKuivavara",
   "parameters": {
-    "sensorId": "A3"
+    "deviceId": "A3"
   }
 }
 ```
@@ -829,6 +834,7 @@ Kaikki MCP‑komennot ja niiden tulokset kirjataan tietokantaan.
 Turvallisuus on keskeinen osa luonnollisen kielen ohjausta, koska käyttäjä voi antaa komentoja hyvin vapaamuotoisesti.
 
 ---
+---
 
 ## 8. Kokonaisautomaatio: esimerkkiskenaariot
 
@@ -836,7 +842,9 @@ Tässä luvussa esitellään kokonaisia automaatioskenaarioita, jotka demonstroi
 
 * ***Tässä luvussa esitettävät skenaariot havainnollistavat, miten IoT‑sensorit, Node‑REDin automaatio, MCP‑komennot ja luonnollisen kielen ohjaus muodostavat yhtenäisen RPA‑järjestelmän. Käyttäjä voi antaa komentoja suomen kielellä, LLM tulkitsee ne, MCP muuntaa ne rakenteiseksi automaatioksi ja Node‑RED suorittaa ne fyysisessä tai digitaalisessa ympäristössä. Skenaariot osoittavat järjestelmän joustavuuden, laajennettavuuden ja käytännön sovellettavuuden.***
 
-### 8.1 “Nosta koneen nopeutta 20 %”  
+---
+
+### 8.1 “Nosta patokorkeutta nopeutta 20 cm”  
 
 ### Käyttäjän komento
 > “Nosta Kaivon A1 patokorkeutta 20 cm.”
@@ -848,7 +856,7 @@ LLM tunnistaa käyttäjän tarkoituksen: laitteen nopeuden säätäminen.
 
 ```json
 {
-  "command": "lisääPatokorkeutta",
+  "command": "nostaPatokorkeutta",
   "parameters": {
     "deviceId": "A1",
     "value": 20
@@ -960,6 +968,8 @@ Käyttäjä haluaa yhteenvedon koko päivän datasta.
 ### LLM:n vastaus käyttäjälle
 > “Tässä on yhteenveto tämän päivän sensoridatasta: Kuivavara 50 cm, maksimi 60 cm, minimi 50 cm.Kaivon A1 patokorkeys 60 cm ”
 
+---
+
 ### 8.5 “Käynnistä laite uudelleen”  
 
 ### Käyttäjän komento
@@ -991,12 +1001,15 @@ Jos käyttäjä ei anna sitä, LLM voi kysyä tarkennuksen.
 “Laite ‘kaivo A1’ käynnistettiin uudelleen onnistuneesti.”
 
 ---
+---
 
 ## 9. Testaus ja validointi
 
 Testaus ja validointi ovat keskeisiä vaiheita IoT‑pohjaisen RPA‑järjestelmän rakentamisessa. Koska järjestelmä yhdistää fyysiset sensorit, ohjelmallisen automaation, MCP‑komennot ja luonnollisen kielen ohjauksen, sen toimivuus riippuu useiden eri komponenttien saumattomasta yhteistyöstä. Tässä luvussa kuvataan testausmenetelmät, työkalut ja skenaariot, joilla varmistetaan järjestelmän luotettavuus, suorituskyky ja turvallisuus.
 
 * ***Tässä luvussa esiteltiin testaus- ja validointimenetelmät, joilla varmistetaan IoT‑pohjaisen RPA‑järjestelmän luotettavuus. Testaus kattaa yksittäiset solmut, integraatiot, kokonaiset skenaariot ja MCP‑komentojen toiminnan. Sensoridatan simulointi, virheenkäsittely ja suorituskykytestit muodostavat kokonaisuuden, joka tekee järjestelmästä vakaan, turvallisen ja käytännössä toimivan.***
+
+---
 
 ### 9.1 Testausmenetelmät  
 
@@ -1026,6 +1039,8 @@ Kokonaisvaltainen testaus todellisilla käyttötilanteilla.
 * “Sensoridatan puuttuminen → virheilmoitus”
 
 Skenaariotestaus simuloi todellisia tilanteita ja varmistaa järjestelmän käytännön toimivuuden.
+
+---
 
 ### 9.2 Sensoridatan simulointi  
 
@@ -1136,6 +1151,7 @@ Järjestelmän suorituskyky arvioidaan seuraavilla mittareilla:
 Suorituskykytestit varmistavat, että järjestelmä toimii luotettavasti myös pidemmän ajan ja kuormituksen alla.
 
 ---
+---
 
 ## 10. Johtopäätökset ja jatkokehitys
 
@@ -1189,6 +1205,7 @@ Automaatiojärjestelmän käyttäminen keskustelemalla on mahdollista, mutta vä
   * testaus ei LLM palveluja käytettäessä ole koskaan aukoton
   * komennot on annettava yksiselitteisesti, mm. deviceId
   * komennon varmentaminen "RTIC MESH" komentona on suositeltavaa
+    * kun toistetaan komento käyttäjälle "RTIC MESH" komentona, voidaan havaita virheet tekoälyn tulkinnassa jos käyttäjällä on riittävät tiedot RTIC-komentojen tulkintaan
 
 ---
 
